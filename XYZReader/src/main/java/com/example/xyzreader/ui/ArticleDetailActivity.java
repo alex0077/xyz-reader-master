@@ -49,15 +49,6 @@ public class ArticleDetailActivity extends AppCompatActivity
     private MyPagerAdapter mPagerAdapter;
     private View mUpButtonContainer;
     private View mUpButton;
-
-    /**
-     * Techique from androiddesignpatterns.com to return perform shared element transitions
-     * when returning from another page (of the ViewPager).
-     * http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html
-     *
-     * Companion Github code for the post series:
-     * https://github.com/alexjlockwood/adp-activity-transitions
-     */
     private ArticleDetailFragment mCurrentDetailsFragment;
     private static final String STATE_CURRENT_PAGE_POSITION = "state_current_page_position";
     private int mCurrentPosition;
@@ -116,7 +107,7 @@ public class ArticleDetailActivity extends AppCompatActivity
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
         mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
 
-        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
